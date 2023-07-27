@@ -8,7 +8,7 @@ import {
   DeleteIcon,
   ColoredHeart,
 } from './Contact.styled';
-import { deleteContact, toggleFavorite } from '../../redux/operations';
+import { deleteContact, toggleFavorite } from '../../redux/contacts/operations';
 
 export const Contact = ({ contact }) => {
   const { id, name, number, favorite } = contact;

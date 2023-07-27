@@ -1,16 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  StyledHeader,
-  Navigation,
-  NavigationLink,
-  Logo,
-  LogoText,
-  LogoWrap,
-} from './Header.styled';
+import UserMenu from '../UserMenu/UserMenu';
+import AuthNav from '../AuthNav/AuthNav';
+import { useAuth } from 'hooks/useAuth';
+import { StyledHeader, Logo, LogoText, LogoWrap } from './Header.styled';
 import logo from './phone-book-logo.png';
 
 function Header() {
+  const { isLoggedIn } = useAuth();
   return (
     <StyledHeader>
       <Link to="/">
@@ -19,10 +16,7 @@ function Header() {
           <LogoText>Phonebook</LogoText>
         </LogoWrap>
       </Link>
-      <Navigation>
-        <NavigationLink to="/">View contacts</NavigationLink>
-        <NavigationLink to="/add">Add contact</NavigationLink>
-      </Navigation>
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </StyledHeader>
   );
 }

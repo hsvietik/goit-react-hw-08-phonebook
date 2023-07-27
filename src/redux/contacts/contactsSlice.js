@@ -5,7 +5,6 @@ import {
   deleteContact,
   toggleFavorite,
 } from './operations';
-import Notiflix from 'notiflix';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -14,7 +13,6 @@ const handlePending = state => {
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
-  return Notiflix.Notify.failure(`Oops, something went wrong.`, 100);
 };
 const handleFetchContacts = (state, action) => {
   state.isLoading = false;
@@ -44,13 +42,14 @@ const handleToggleFavorite = (state, action) => {
   state.items.splice(index, 1, action.payload);
 };
 
+const initialState = {
+  items: [],
+  isLoading: false,
+  error: null,
+};
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: {
-    items: [],
-    isLoading: false,
-    error: null,
-  },
+  initialState,
   extraReducers: builder =>
     builder
       .addCase(fetchContacts.pending, handlePending)
