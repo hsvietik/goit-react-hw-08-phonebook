@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCurrentUser } from '../redux/auth/authOperations';
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SharedLayout from './SharedLayout/SharedLayout';
@@ -10,6 +12,10 @@ const AddContact = lazy(() => import('../pages/AddContact'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 export function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>

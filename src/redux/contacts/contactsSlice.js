@@ -1,10 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  fetchContacts,
-  addContact,
-  deleteContact,
-  toggleFavorite,
-} from './operations';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -33,15 +28,6 @@ const handleDeleteContact = (state, action) => {
   );
   state.items.splice(index, 1);
 };
-const handleToggleFavorite = (state, action) => {
-  state.isLoading = false;
-  state.error = null;
-  const index = state.items.findIndex(
-    contact => contact.id === action.payload.id
-  );
-  state.items.splice(index, 1, action.payload);
-};
-
 const initialState = {
   items: [],
   isLoading: false,
@@ -60,10 +46,7 @@ const contactsSlice = createSlice({
       .addCase(addContact.rejected, handleRejected)
       .addCase(deleteContact.pending, handlePending)
       .addCase(deleteContact.fulfilled, handleDeleteContact)
-      .addCase(deleteContact.rejected, handleRejected)
-      .addCase(toggleFavorite.pending, handlePending)
-      .addCase(toggleFavorite.fulfilled, handleToggleFavorite)
-      .addCase(toggleFavorite.rejected, handleRejected),
+      .addCase(deleteContact.rejected, handleRejected),
 });
 
 export const contactsReducer = contactsSlice.reducer;

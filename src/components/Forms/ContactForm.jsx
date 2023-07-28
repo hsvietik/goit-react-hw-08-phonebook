@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-// import Notiflix from 'notiflix';
+import toast, { Toaster } from 'react-hot-toast';
 import { useSelector, useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {
@@ -30,25 +30,30 @@ export function ContactForm() {
   });
 
   const onSubmit = ({ name, number }) => {
-    // const contactExists = contacts.find(contact => contact.name === name);
-    // if (contactExists) {
-    //   return Notiflix.Notify.failure(`${name} is already in contacts.`, 100);
-    // }
+    const contactExists = contacts.find(contact => contact.name === name);
+    if (contactExists) {
+      toast.error(`${name} is already in contacts. Search in contacts.`);
+      // navigate('/contacts', { replace: true });
+      return;
+    }
     dispatch(addContact({ name, number }));
     dispatch(setFilter(''));
     reset();
-    navigate('/', { replace: true });
+    navigate('/contacts', { replace: true });
   };
 
   return (
-    <StyledForm onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="name">Name</label>
-      <StyledInput {...register('name')} type="text" id="name" />
-      <ErrorMessage>{errors.name?.message}</ErrorMessage>
-      <label htmlFor="number">Number</label>
-      <StyledInput {...register('number')} type="tel" id="number" />
-      <ErrorMessage>{errors.number?.message}</ErrorMessage>
-      <FormButton type="submit">Add contact</FormButton>
-    </StyledForm>
+    <>
+      <StyledForm onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="name">Name</label>
+        <StyledInput {...register('name')} type="text" id="name" />
+        <ErrorMessage>{errors.name?.message}</ErrorMessage>
+        <label htmlFor="number">Number</label>
+        <StyledInput {...register('number')} type="tel" id="number" />
+        <ErrorMessage>{errors.number?.message}</ErrorMessage>
+        <FormButton type="submit">Add contact</FormButton>
+      </StyledForm>
+      <Toaster />
+    </>
   );
 }

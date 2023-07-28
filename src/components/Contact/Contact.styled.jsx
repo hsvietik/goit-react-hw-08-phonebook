@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { FaTrash, FaHeart } from 'react-icons/fa';
+import { FaTrash } from 'react-icons/fa';
 export const Item = styled.li`
   display: flex;
   gap: 10px;
@@ -40,11 +40,9 @@ export const ToggleFavourite = styled.button`
 export const DeleteIcon = styled(FaTrash)`
   width: 15px;
   height: 15px;
+  color: #389677;
   &:hover,
   &:focus {
-    color: #389677;
+    color: #b64d3e;
   }
-`;
-export const ColoredHeart = styled(FaHeart)`
-  color: #b64d3e;
 `;
