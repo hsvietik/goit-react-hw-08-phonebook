@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from 'redux/auth/authOperations';
 import { useAuth } from 'hooks/useAuth';
-import { Menu, LogOutButton, ContactsLink } from './UserMenu.styled';
+import { Menu, Wrap, LogOutButton, ContactsLink } from './UserMenu.styled';
 
 function UserMenu() {
   const dispatch = useDispatch();
@@ -16,10 +16,12 @@ function UserMenu() {
   return (
     <Menu>
       <p>Welcome, {userName}</p>
-      <ContactsLink to="/contacts">Contacts</ContactsLink>
-      <LogOutButton type="button" onClick={handleLogOut}>
-        Log out
-      </LogOutButton>
+      <Wrap>
+        <ContactsLink to="/contacts">Contacts</ContactsLink>
+        <LogOutButton type="button" onClick={handleLogOut}>
+          Log out
+        </LogOutButton>
+      </Wrap>
     </Menu>
   );
 }

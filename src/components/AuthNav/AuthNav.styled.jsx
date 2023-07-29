@@ -8,12 +8,17 @@ export const Navigation = styled.nav`
 `;
 
 export const NavigationLink = styled(NavLink)`
+  min-width: 70px;
   padding: 8px;
   border-radius: 6px;
   text-decoration: none;
   font-style: inherit;
   color: inherit;
   background-color: ${Colors.blue};
+  &:hover,
+  &:focus {
+    background-color: ${Colors.blueHover};
+  }
   &.active {
     background-color: ${Colors.green};
   }

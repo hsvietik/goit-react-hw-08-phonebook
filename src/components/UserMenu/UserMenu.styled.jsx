@@ -4,10 +4,17 @@ import { Colors } from '../../helpers/colors';
 
 export const Menu = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 20px;
+  justify-content: flex-end;
+  gap: 10px;
+`;
+export const Wrap = styled.div`
+  display: flex;
+  gap: 10px;
 `;
 export const ContactsLink = styled(Link)`
+  min-width: 80px;
   padding: 8px;
   border-radius: 6px;
   font-size: 16px;
@@ -18,6 +25,7 @@ export const ContactsLink = styled(Link)`
   }
 `;
 export const LogOutButton = styled.button`
+  min-width: 80px;
   color: inherit;
   font-weight: inherit;
   letter-spacing: inherit;
