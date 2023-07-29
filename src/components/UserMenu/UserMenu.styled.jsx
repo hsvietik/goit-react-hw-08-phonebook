@@ -1,30 +1,33 @@
 import styled from '@emotion/styled';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Colors } from '../../helpers/colors';
 
-export const Navigation = styled.nav`
+export const Menu = styled.div`
   display: flex;
+  align-items: center;
   gap: 20px;
 `;
-
-export const NavigationLink = styled(NavLink)`
-  text-decoration: none;
-  font-style: inherit;
-  color: inherit;
-  font-size: 18px;
-  font-weight: 900;
-  &.active {
-    color: #1f7ba0;
-  }
-`;
-
-export const LogOutButton = styled.button`
+export const ContactsLink = styled(Link)`
   padding: 8px;
   border-radius: 6px;
   font-size: 16px;
-  font-weight: 700;
-  background-color: #c7a149;
+  background-color: ${Colors.blue};
   &:focus,
   &:hover {
-    background-color: #b38f41;
+    background-color: ${Colors.blueHover};
+  }
+`;
+export const LogOutButton = styled.button`
+  color: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background-color: ${Colors.yellow};
+  cursor: pointer;
+  &:focus,
+  &:hover {
+    background-color: ${Colors.yellowHover};
   }
 `;

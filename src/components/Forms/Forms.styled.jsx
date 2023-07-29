@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Colors } from '../../helpers/colors';
 
 export const StyledForm = styled.form`
   width: 300px;
@@ -6,9 +7,8 @@ export const StyledForm = styled.form`
   flex-direction: column;
   gap: 10px;
   padding: 30px;
-  border: solid 2px;
   border-radius: 6px;
-  background-color: #389677;
+  background-color: ${Colors.green};
 `;
 
 export const StyledInput = styled.input`
@@ -17,18 +17,21 @@ export const StyledInput = styled.input`
   background-color: #e1d5bb;
   &:focus,
   &:hover {
-    outline: solid 2px #c7a149;
+    outline: solid 2px ${Colors.yellow};
   }
 `;
 export const FormButton = styled.button`
   margin-top: 10px;
   padding: 10px;
   border-radius: 6px;
-  font-size: 16px;
-  background-color: #c7a149;
+  color: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  padding: 8px;
+  background-color: ${Colors.yellow};
   &:focus,
   &:hover {
-    background-color: #b38f41;
+    background-color: ${Colors.yellowHover};
   }
 `;
 export const ErrorMessage = styled.p`

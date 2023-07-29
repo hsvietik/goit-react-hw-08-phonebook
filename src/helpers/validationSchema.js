@@ -10,7 +10,10 @@ export const registrationSchema = yup
       )
       .required('Name is required'),
     email: yup.string().email('Invalid email').required('Email is required'),
-    password: yup.string().required('Password is required'),
+    password: yup
+      .string()
+      .min(7, 'Password must be at least 7 characters long')
+      .required('Password is required'),
   })
   .required();
 
@@ -18,7 +21,10 @@ export const loginSchema = yup
   .object()
   .shape({
     email: yup.string().email('Invalid email').required('Email is required'),
-    password: yup.string().required('Password is required'),
+    password: yup
+      .string()
+      .min(7, 'Password must be at least 7 characters long')
+      .required('Password is required'),
   })
   .required();
 

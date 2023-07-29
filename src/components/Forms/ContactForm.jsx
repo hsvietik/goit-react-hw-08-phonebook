@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { useSelector, useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -17,7 +16,7 @@ import { contactAddSchema } from '../../helpers/validationSchema';
 
 export function ContactForm() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const contacts = useSelector(getContacts);
   const {
     register,
@@ -32,14 +31,13 @@ export function ContactForm() {
   const onSubmit = ({ name, number }) => {
     const contactExists = contacts.find(contact => contact.name === name);
     if (contactExists) {
-      toast.error(`${name} is already in contacts. Search in contacts.`);
-      // navigate('/contacts', { replace: true });
+      toast.error(`${name} is already in contacts`);
+      reset();
       return;
     }
     dispatch(addContact({ name, number }));
     dispatch(setFilter(''));
     reset();
-    navigate('/contacts', { replace: true });
   };
 
   return (

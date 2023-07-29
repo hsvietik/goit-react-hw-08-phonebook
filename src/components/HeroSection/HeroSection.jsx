@@ -9,7 +9,7 @@ function HeroSection() {
       <div>
         <Text>
           Phonebook app ensures you will always have the latest and complete
-          contact information and will never lose a contact anymore.
+          contact information and will never lose a contact anymore
         </Text>
         <Text>To use the Phonebook app Register or Log In</Text>
       </div>

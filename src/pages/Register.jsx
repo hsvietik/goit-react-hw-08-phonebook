@@ -4,7 +4,7 @@ import { RegisterForm } from '../components/Forms/RegisterForm';
 function Register() {
   return (
     <div>
-      <p>Create an account</p>
+      <h3>Create an account</h3>
       <RegisterForm />
     </div>
   );
