@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 export const Container = styled.div`
-  margin: 0px auto;
-  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 export const Main = styled.main`
   padding: 20px;
